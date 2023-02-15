@@ -1,0 +1,50 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="UTF-8">
+    <title>The Runoob</title>
+    <style type="text/css">
+        p{
+            font-size:36px;
+            color:red;
+            text-align:center;
+        }
+    </style>
+    <link rel="stylesheet" href="/static/plugins/bootstrap/css/bootstrap.css">
+
+
+</head>
+
+<body>
+    {% load my_tags %}
+    {% load static %}
+    <p>{{ hello|default:"a?" }}</p>
+    <p>{{ hello.1|lower }}</p>
+    <p>{{ hello.2|truncatewords:1 }}</p>
+    <h1>{{ time }}</h1>
+    <img decoding='async' src="{% static 'images/profile.jpg' %}" alt="profile">
+    
+    {% if number == 1 %}
+    <p>The number is {{ number }}, equals to 1.</p>
+    {% elif number == 0 %}
+    <p>The number is {{ number }}, equals to 0.</p>
+    {% else %}
+    <p>The number is {{ number }}, neither 1 nor 0.</p>
+    <p>Multiply with 4, the result is {{ number|my_filter:4 }}.</p>
+    <p>Multiply with 2 and 3, the result is {% my_tag1 number 2 3 %}.</p>
+    {% endif %}
+    
+    <ul>
+        {% for word in hello reversed %}
+            <li>{{ forloop.counter0 }} {{ word }}</li>
+        {% endfor %}
+    </ul>
+    
+    {# 这是一个注释 #}
+    
+    {% my_html 'zzz' 'xxx' %}
+
+</body>
+
+</html>
+
