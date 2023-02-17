@@ -6,15 +6,19 @@
 </head>
 <body>
     <div style='width:500px;height:auto'>
-        <div id='user_page' style='width:100px;height:auto;background-color:gray;float:left;'>
+        <div id='user_page' style='width:100px;height:auto;background-color:thistle;float:left;'>
             <p>这是侧边栏</p>
         </div>
 
         <div id='login_page' style='width:400px;height:auto;float:left;'>
-            <form>
+            <form name='input' method='post' action='/mainpage/'>
                 User Name: <input type='text' name='fname'><br/>
                 Password: <input type='password' name='pw'><br/>
-                <input type='submit' name='登录' style='text-align:center;'>
+                <p> {{ message }} </p>
+                <!-- <input type='button' name='login' value='登录' style='text-align:center;'>
+                <input type='button' name='register' value='注册' style='text-align:center;'> -->
+                <input type='submit' name='login' value='登录' style='text-align:center;'>
+                <input type='submit' name='register' value='注册' style='text-align:center;'>
             </form>
         </div>
 

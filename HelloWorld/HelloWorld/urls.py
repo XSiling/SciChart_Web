@@ -29,6 +29,7 @@ urlpatterns = [
     url(r'runoob/', views.runoob),
     url(r'testdb/', testdb.testdb),
     url(r'test/', views.test),
-    url(r'login/', views.login)
+    url(r'login/', views.login),
+    url(r'mainpage/', views.mainpage),
 ]
  
