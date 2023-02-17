@@ -25,8 +25,10 @@ from django.urls import re_path as url
 from . import views, testdb
 
 urlpatterns = [
-    url(r'^$', views.hello),
+    url(r'^$', views.login),
     url(r'runoob/', views.runoob),
     url(r'testdb/', testdb.testdb),
+    url(r'test/', views.test),
+    url(r'login/', views.login)
 ]
  

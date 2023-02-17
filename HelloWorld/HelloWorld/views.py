@@ -13,3 +13,11 @@ def runoob(request):
     context['time'] = now
     context['number'] = 3
     return render(request, 'runoob.html', context)
+
+def test(request):
+    context = {}
+    return render(request, 'test.html', context)
+
+def login(request):
+    context = {}
+    return render(request, 'login.html', context)
