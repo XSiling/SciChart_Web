@@ -17,13 +17,31 @@
                 <tr>
                     <td id='chart-input' style='width:50%;'>
                         <p>输入数据</p>
-                        <input type='text' id='h'/>
-                        <input type='text' id='l'/>
-                        <br/>
-                        <input type='button' value='增加数据' onclick="add()"/>
-                        <div id='input-div-table'>
 
+                        <hr/>
+                        <div>
+                            <input type='button' value='增加行' onclick="add_row()"/>
+                            <input type='button' value='减少行' onclick="remove_row()"/>
+                            <input type='button' value='增加列' onclick="add_column()"/>
+                            <input type='button' value='减少列' onclick="remove_column()"/>
+                            <input type='button' value='保存' onclick="save()"/>
                         </div>
+                        <hr/>
+                        <div id='input-div-table' border="1" style="width:100%">
+                            <table>
+                                <tr>
+                                    <td><input style="width:50%" value=1 onchange="value_change()"></td>
+                                    <td><input style="width:50%" value=1 onchange="value_change()"></td>
+                                </tr>
+                                <tr>
+                                    <td><input style="width:50%" value=1 onchange="value_change()"></td>
+                                    <td><input style="width:50%" value=1 onchange="value_change()"></td>
+                                </tr>
+                            </table>
+                        </div>
+
+
+
                     </td>
                     <td id='chart-show' style='width:50%;'>
                         2
@@ -34,22 +52,182 @@
 
         </div>
         <script>
-            function add(){
-                console.log("1");
-                window.alert("1");
-                var h = document.getElementById('h').value;
-                var l = document.getElementById('l').value;
-                var tab = "<table border='1'>";
-                for (var i=1;i<=h;++i){
-                    tab += "<tr>"
-                    for (var j=1;j<=l;++j){
-                        tab += "<td>lqw</td>";
-                    }
-                    tab+='</tr>'
+        var row=2;
+        var column=2;
+        var col_width;
+        var current_value;
+        col_width = column==2?"50%":"33%";
+        var first_array = new Array();
+        first_array.push(1);first_array.push(1);
+        var second_array = new Array();
+        second_array.push(1);second_array.push(1);
+        var third_array = new Array();
+
+
+        function add_row(){
+            if (row >= 10){
+                window.alert("无法增加更多行");
+                return;
             }
-            tab+="</table>"
+            row += 1;
+            var tab = "<table>";
+            switch(column){
+                case 2:
+                    first_array.push(1);
+                    second_array.push(1);
+                    break;
+                case 3:
+                    first_array.push(1);
+                    second_array.push(1);
+                    third_array.push(1);
+                    break;
+            }
+            for (var i=0; i<row; i++){
+                tab += "<tr>";
+                for (var j=0; j<column; j++){
+                    tab += '<td><input style="width:';
+                    tab += col_width;
+                    tab += '" value=';
+                    switch(j){
+                        case 0:
+                            current_value = first_array[i];
+                            break;
+                        case 1:
+                            current_value = second_array[i];
+                            break;
+                        case 2:
+                            current_value = third_array[i];
+                            break;
+                    }
+                    tab += String(current_value);
+                    tab += ' onchange="value_change()"></td>';
+                }
+            }
+            tab+="</table>";
             var divv = document.getElementById("input-div-table");
             divv.innerHTML=tab;
+        }
+
+        function remove_row(){
+            if ( row<=1 ){
+                window.alert("无法删除更多行！");
+                return;
+            }
+            row -=1 ;
+            var tab = "<table>";
+            switch(column){
+                case 2:
+                    first_array.pop();
+                    second_array.pop();
+                    break;
+                case 3:
+                    first_array.pop();
+                    second_array.pop();
+                    third_array.pop();
+                    break;
+            }
+            for (var i=0; i<row; i++){
+                tab += "<tr>";
+                for (var j=0; j<column; j++){
+                    tab += '<td><input style="width:';
+                    tab += col_width;
+                    tab += '" value=';
+                    switch(j){
+                        case 0:
+                            current_value = first_array[i];
+                            break;
+                        case 1:
+                            current_value = second_array[i];
+                            break;
+                        case 2:
+                            current_value = third_array[i];
+                            break;
+                    }
+                    tab += String(current_value);
+                    tab += ' onchange="value_change()"></td>';
+                }
+            }
+            tab+="</table>";
+            var divv = document.getElementById("input-div-table");
+            divv.innerHTML=tab;
+        }
+
+        function add_column(){
+            if (column != 2){
+                window.alert("无法增加列！");
+                return;
+            }
+            column += 1;
+            var tab = "<table>";
+            for (var i=0; i<first_array.length; i++){
+                third_array.push(1);
+            }
+            for (var i=0; i<row; i++){
+                tab += "<tr>";
+                for (var j=0; j<column; j++){
+                    tab += '<td><input style="width:';
+                    tab += col_width;
+                    tab += '" value=';
+                    switch(j){
+                        case 0:
+                            current_value = first_array[i];
+                            break;
+                        case 1:
+                            current_value = second_array[i];
+                            break;
+                        case 2:
+                            current_value = third_array[i];
+                            break;
+                    }
+                    tab += String(current_value);
+                    tab += ' onchange="value_change()"></td>';
+                }
+            }
+            tab+="</table>";
+            var divv = document.getElementById("input-div-table");
+            divv.innerHTML=tab;
+
+        }
+
+        function remove_column(){
+            if (column != 3){
+                window.alert("无法减少列！");
+                return;
+            }
+            column -= 1;
+            var tab = "<table>";
+            for (var i=0; i<first_array.length; i++){
+                third_array.pop();
+            }
+            for (var i=0; i<row; i++){
+                tab += "<tr>";
+                for (var j=0; j<column; j++){
+                    tab += '<td><input style="width:';
+                    tab += col_width;
+                    tab += '" value=';
+                    switch(j){
+                        case 0:
+                            current_value = first_array[i];
+                            break;
+                        case 1:
+                            current_value = second_array[i];
+                            break;
+                        case 2:
+                            current_value = third_array[i];
+                            break;
+                    }
+                    tab += String(current_value);
+                    tab += ' onchange="value_change()"></td>';
+                }
+            }
+            tab+="</table>";
+            var divv = document.getElementById("input-div-table");
+            divv.innerHTML=tab;
+        }
+
+        function value_change(){
+            
+
         }
         </script>
     </body>
