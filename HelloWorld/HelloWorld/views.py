@@ -23,6 +23,14 @@ def login(request):
     context = {}
     return render(request, 'login.html', context)
 
+def line_chart(request):
+    context = {}
+    return render(request, 'line_chart.html', context)
+
+def histogram(request):
+    context = {}
+    return render(request, 'histogram.html', context)
+    
 def mainpage(request):
     
     context = {}
@@ -39,6 +47,8 @@ def mainpage(request):
                 # there is a user exists.
                 if u.pw == context['password']:
                     # login successfully
+                    global global_username
+                    global_username = context['username']
                     return render(request, 'mainpage.html', context)
                 else:
                     context['message'] = '您输入的密码错误'

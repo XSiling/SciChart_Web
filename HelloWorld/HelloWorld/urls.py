@@ -31,5 +31,7 @@ urlpatterns = [
     url(r'test/', views.test),
     url(r'login/', views.login),
     url(r'mainpage/', views.mainpage),
+    url(r'line-chart/', views.line_chart),
+    url(r'histogram/', views.histogram),
 ]
  

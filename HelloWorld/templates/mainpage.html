@@ -2,8 +2,22 @@
 <html>
     <head>
         <title>SciChart主页</title>
+        <style>
+            table {
+                float: left;
+                margin-left:2.5%;
+                border-collapse: collapse;
+                border-spacing: 20px;
+            }
+
+            img{
+                width:100%;
+            }
+
+        </style>
     </head>
     <body>
+        {% load static %}
         <div id='content-user'>
             <p style='float:right;background-color:thistle;'>{{ username }}</p>
             <br/>
@@ -11,9 +25,18 @@
             <br/>
             <hr/>
         </div>
-        <p>HHHH这里是主页</p>
+        <br/>
         <div id='content-chart'>
-            <p>这里是可选表格页面</p>
+            <div>
+                <table border="none" class="table_one" style="width:95%;table-layout:fixed;">
+                    <tr>
+                        <td style="width:40%;text-align: center;"> <a href="/line-chart/" target="_new"> <img decoding='async' src="{% static 'images/zhexian.jpg.png' %}" alt="zheixantu"><br/>折线图 </a></td>
+                        <td style="width:40%;text-align: center;"> <a href="/histogram/" target="_new"> <img decoding='async' src="{% static 'images/zhuzhuangtu.png' %}" alt="zhuzhuangtu"><br/>柱状图 </a></td>
+                    </tr>
+
+
+                </table>
+            </div>
         </div>
     </body>
 </html>

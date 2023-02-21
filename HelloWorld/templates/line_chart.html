@@ -1,0 +1,57 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <title>paint line chart</title>
+        <style>
+            table {
+                float: left;
+                margin-left:2.5%;
+                border-collapse: collapse;
+                border-spacing: 20px;
+            }
+        </style>
+    </head>
+    <body>
+        <div id='chart'>
+            <table border='none' class='table_one' style='width:95%;table-layout:fixed;'>
+                <tr>
+                    <td id='chart-input' style='width:50%;'>
+                        <p>输入数据</p>
+                        <input type='text' id='h'/>
+                        <input type='text' id='l'/>
+                        <br/>
+                        <input type='button' value='增加数据' onclick="add()"/>
+                        <div id='input-div-table'>
+
+                        </div>
+                    </td>
+                    <td id='chart-show' style='width:50%;'>
+                        2
+                    </td>
+                </tr>
+            </table>
+
+
+        </div>
+        <script>
+            function add(){
+                console.log("1");
+                window.alert("1");
+                var h = document.getElementById('h').value;
+                var l = document.getElementById('l').value;
+                var tab = "<table border='1'>";
+                for (var i=1;i<=h;++i){
+                    tab += "<tr>"
+                    for (var j=1;j<=l;++j){
+                        tab += "<td>lqw</td>";
+                    }
+                    tab+='</tr>'
+            }
+            tab+="</table>"
+            var divv = document.getElementById("input-div-table");
+            divv.innerHTML=tab;
+        }
+        </script>
+    </body>
+
+</html>
