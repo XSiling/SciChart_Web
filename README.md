@@ -6,6 +6,7 @@ This is a website based on django, which is able to help people paint charts mor
 - Login and Register
 - Data Load and Charts Painting
 
+
 ## Configuration
 
 You should own sql at your PC.
